@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "products")
 public class Product {
     @Id
@@ -25,7 +26,8 @@ public class Product {
     private Integer available;
 
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private ProductType type;
 
     @Column(name = "name")
     private String name;
@@ -38,4 +40,10 @@ public class Product {
 
     @Column(name = "season_end_date")
     private LocalDate seasonEndDate;
+
+    @Column(name = "flashsale_end_date")
+    private LocalDate flashSaleEndDate;
+
+    @Column(name = "flashsale_available")
+    private Integer flashSalesAvailable;
 }
